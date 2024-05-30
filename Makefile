@@ -15,6 +15,8 @@ unspecified:
 	@echo "  Single run:"
 	@echo "     clean"
 	@echo "     build"
+	@echo "     scp_orin"
+	@echo "     scp_pi"
 	@echo "     gui_frontend"
 	@echo "     gui_backend"
 	@echo "     drive_rover"
@@ -101,4 +103,13 @@ science:
 
 # TODO!!!
 autonomy:
-	@ros2 launch 
+	@ros2 launch
+
+
+#### SCP Functions
+
+scp_orin:
+	@cd .. && scp -r systems_2023_24/ orin@ubuntu.local:/home/orin/
+
+scp_pi:
+	@cd .. && scp -r systems_2023_24/ cameron@rpi.local:/home/cameron/
