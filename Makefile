@@ -6,14 +6,25 @@ default: unspecified
 
 unspecified:
 	@echo "Please specify a run option:"
+	@echo "  Grouped Options:"
+	@echo "    drive"
+	@echo "    arm"
+	@echo "    gui"
+	@echo "    televideo"
+
+	@echo "  Single run:"
 	@echo "     clean"
 	@echo "     build"
+	@echo "     gui_frontend"
+	@echo "     gui_backend"
 	@echo "     drive_rover"
 	@echo "     drive_base"
 	@echo "     arm_rover"
 	@echo "     arm_base"
-	@echo "     telecom_base"
-	@echo "     telecom_rover"
+	@echo "     televideo_base"
+	@echo "     televideo_rover"
+	@echo "     gps_rover"
+	@echo "     gps_base"
 	@echo "     science"
 	@echo "     autonomy"
 
@@ -21,9 +32,24 @@ clean:
 	@rm -rf build/ install/ log/
 
 build:
-	@colcon build
+	@colcon build --continue-on-error
+
+#### GUI
+
+gui:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/gui.conf
+
+gui_frontend:
+	@cd sys_ws/base-station-gui/client && npm run dev
+
+gui_backend:
+	# TODO: Need to run script to get databases first?
+	@cd sys_ws/base-station-gui/server && python manage.py migrate && python manage.py runserver
 
 #### DRIVE
+
+drive:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/drive.conf
 
 drive_rover:
 	@ros2 launch drive rover_drive_launch.yaml
@@ -33,16 +59,38 @@ drive_base:
 
 #### ARM
 
+arm:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/arm.conf
+
 arm_rover:
 	@ros2 launch arm rover_arm_launch.yaml
 
 arm_base:
-	@ros2 launch drive base_arm_launch.yaml
+	@ros2 launch arm base_arm_launch.yaml
 
 #### TELECOM
 
+televideo:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/televideo.conf
+
+televideo_base:
+	@ros2 launch sys_ws/televideo_2023_24/src/all_camera_decode.launch.py
+
 televideo_rover:
-	@ros2 launch sys_ws/telecom_2023_24/src/
+	@ros2 launch sys_ws/televideo_2023_24/src/all_camera_encode.launch.py
+
+
+#### GPS
+
+gps:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/gps.conf
+
+gps_base:
+	@ros2 launch sys_ws/autonomy_2023_24/gps/base_gps.launch.py
+
+gps_rover:
+	@ros2 launch sys_ws/autonomy_2023_24/gps/rover_gps.launch.py
+
 
 #### SCIENCE
 

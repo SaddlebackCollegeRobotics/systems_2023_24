@@ -1,0 +1,25 @@
+<window.Window object at 0x77038ab69380 (terminatorlib+window+Window at 0x644c41956290)> is not in registered window list
+<window.Window object at 0x7916271ae140 (terminatorlib+window+Window at 0x63100caae290)> is not in registered window list
+<window.Window object at 0x768d27119f80 (terminatorlib+window+Window at 0x63c03dac8540)> is not in registered window list
+<window.Window object at 0x768d2e91fec0 (terminatorlib+window+Window at 0x63c03dac82a0)> is not in registered window list
+<window.Window object at 0x7cfc5c37f3c0 (terminatorlib+window+Window at 0x5a510a52e2a0)> is not in registered window list
+<window.Window object at 0x7da6a22a3e80 (terminatorlib+window+Window at 0x64c47a136530)> is not in registered window list
+<window.Window object at 0x7da6a3c9bdc0 (terminatorlib+window+Window at 0x64c47a136290)> is not in registered window list
+<window.Window object at 0x7ef9b3e5c340 (terminatorlib+window+Window at 0x60a188a20530)> is not in registered window list
+<window.Window object at 0x7ef9c06e7a40 (terminatorlib+window+Window at 0x60a188a20290)> is not in registered window list
+<window.Window object at 0x757e36eeaa80 (terminatorlib+window+Window at 0x6467d4d78530)> is not in registered window list
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/terminatorlib/paned.py", line 312, in wrapcloseterm
+    Terminator().find_terminal_by_uuid(sibling.get_toplevel().last_active_term.urn).grab_focus()
+AttributeError: 'NoneType' object has no attribute 'urn'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/terminatorlib/paned.py", line 314, in wrapcloseterm
+    dbg('cannot find terminal with uuid: %s' % sibling.get_toplevel().last_active_term.urn)
+AttributeError: 'NoneType' object has no attribute 'urn'
+<window.Window object at 0x757e36f73ac0 (terminatorlib+window+Window at 0x6467d4d787d0)> is not in registered window list
+<window.Window object at 0x757e36c41200 (terminatorlib+window+Window at 0x6467d4d78d10)> is not in registered window list
+<window.Window object at 0x757e36ca4fc0 (terminatorlib+window+Window at 0x6467d4d78fb0)> is not in registered window list
+<window.Window object at 0x757e36f84940 (terminatorlib+window+Window at 0x6467d4d78290)> is not in registered window list

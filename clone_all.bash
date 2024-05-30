@@ -3,11 +3,15 @@ cd sys_ws
 
 URL_PREFIX=https://github.com/SaddlebackCollegeRobotics/
 
-echo "Cloning base station..."
+echo "Cloning base station gui..."
 git clone $URL_PREFIX/base-station-gui.git -q
 cd base-station-gui
-git pull 
-cd ..
+git pull
+cd client
+npm install
+cd ../server
+python3 -m pip install -r requirements.txt
+cd ../..
 
 echo "Cloning autonomy..."
 git clone $URL_PREFIX/autonomy_2023_24.git -q
@@ -37,4 +41,7 @@ echo "Cloning drive..."
 git clone $URL_PREFIX/drive_2023_24.git -q
 cd drive_2023_24
 git pull 
+cd ..
+
+# Back to base directory
 cd ..
