@@ -5,7 +5,7 @@ WS := ./sys_ws
 default: unspecified
 
 unspecified:
-	@echo "Please specify run option(s) [clean, build, drive-rover, drive-base, arm-rover, arm-base, x`, science, autonomy]"
+	@echo "Please specify run option(s) [clean, build, drive_rover, drive_base, arm_rover, arm_base, telecom_base, telecom_rover, science, autonomy]"
 	@exit 1
 
 clean:
@@ -16,33 +16,33 @@ build:
 
 #### DRIVE
 
-drive-rover:
+drive_rover:
 	@ros2 launch drive rover_drive_launch.yaml
 
-drive-base:
+drive_base:
 	@ros2 launch drive base_drive_launch.yaml
 
 #### ARM
 
-arm-rover:
+arm_rover:
 	@ros2 launch arm rover_arm_launch.yaml
 
-arm-base:
+arm_base:
 	@ros2 launch drive base_arm_launch.yaml
 
 #### TELECOM
 
-televideo-rover:
+televideo_rover:
 	@ros2 launch sys_ws/televideo_2023_24/src/rover_televideo.launch.py
 
-televideo-base:
+televideo_base:
 		@ros2 launch sys_ws/televideo_2023_24/src/base_televideo.launch.py
 
 #### SCIENCE
 
 # TODO!!!
 science:
-	@ros2 launch sys_ws/science_2023_24/src/backend-listener.launch.py
+	@ros2 launch sys_ws/science_2023_24/src/backend_listener.launch.py
 
 #### AUTONOMY
 
