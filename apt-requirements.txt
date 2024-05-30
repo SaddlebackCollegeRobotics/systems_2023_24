@@ -1,2 +1,3 @@
 git
 ros-humble-rtcm-msgs
+ros-humble-ublox-dgnss

@@ -1,8 +1,10 @@
 #!/bin/bash
 
+set +x
+
 # Install necessary packages
 # TODO!!!
-sudo apt install $(cat apt-requirements.txt)
+sudo apt install $(cat apt-requirements.txt) -y
 
 python3 -m pip install -r pip-requirements.txt
 
@@ -10,7 +12,7 @@ python3 -m pip install -r pip-requirements.txt
 source ./clone_all.bash
 
 # Auto-install ros2 dependencies
-rosdep install -i --from-paths . -r -y
+rosdep install -i --from-paths . -y
 
 
 # Add ros2 install files to .bashrc

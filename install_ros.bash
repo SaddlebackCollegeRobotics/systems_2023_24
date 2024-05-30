@@ -42,8 +42,3 @@ rosdep update
 
 # Set up ROS environment
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-
-# Set up Colcon features
-echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
-echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
-echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc

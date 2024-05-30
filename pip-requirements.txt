@@ -3,3 +3,4 @@ odrive
 opencv-python
 cvbridge3
 matplotlib
+pyserial
