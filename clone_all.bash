@@ -38,6 +38,3 @@ git clone $URL_PREFIX/drive_2023_24.git -q
 cd drive_2023_24
 git pull 
 cd ..
-
-
-rosdep install -i --from-paths .
