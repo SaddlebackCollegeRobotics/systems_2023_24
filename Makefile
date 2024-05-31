@@ -6,17 +6,21 @@ default: unspecified
 
 unspecified:
 	@echo "Please specify a run option:"
+	@echo "  Missions:"
+	@echo "    retrieval_mission"
+	@echo "    science_mission"
+	@echo "    TODO!"
+	@echo ""
 	@echo "  Grouped Options:"
 	@echo "    drive"
 	@echo "    arm"
 	@echo "    gui"
 	@echo "    televideo"
-
+	@echo ""
 	@echo "  Single run:"
 	@echo "     clean"
 	@echo "     build"
-	@echo "     scp_orin"
-	@echo "     scp_pi"
+	@echo "     heartbeat"
 	@echo "     gui_frontend"
 	@echo "     gui_backend"
 	@echo "     drive_rover"
@@ -29,12 +33,31 @@ unspecified:
 	@echo "     gps_base"
 	@echo "     science"
 	@echo "     autonomy"
+	@echo "     scp_orin"
+	@echo "     scp_pi"
+	@echo "     ssh_pi"
+	@echo "     ssh_pi"
 
 clean:
 	@rm -rf build/ install/ log/
 
 build:
-	@colcon build --continue-on-error
+	# TODO: Build full autonomy pkgs
+	@colcon build --continue-on-error --packages-skip nav2_sms_behavior zed_components zed_wrapper zed_ros2
+
+#### MISSIONS
+
+retrieval_mission:
+	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
+
+science_mission:
+	@terminator --maximize --working-directory "$(pwd)" --config termc/science.conf
+
+
+#### HEARTBEAT
+
+heartbeat:
+	@ros2 launch heartbeat_manager heartbeat_launch.yaml
 
 #### GUI
 
@@ -97,7 +120,7 @@ gps_rover:
 #### SCIENCE
 
 science:
-	@ros2 launch sys_ws/science_2023_24/src/backend_listener.launch.py
+	@ros2 launch sys_ws/science_2023_24/src/backend-listener.launch.py
 
 #### AUTONOMY
 
@@ -113,3 +136,9 @@ scp_orin:
 
 scp_pi:
 	@cd .. && scp -r systems_2023_24/ cameron@rpi.local:/home/cameron/
+
+ssh_orin:
+	@ssh -t orin@ubuntu.local "cd systems_2023_24 ; bash --login"
+
+ssh_pi:
+	@ssh -t cameron@rpi.local "cd systems_2023_24 ; bash --login"
