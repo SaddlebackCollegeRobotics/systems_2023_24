@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 WS := ./sys_ws
 
-.PHONY: default clean build unspecified
+.PHONY: default clean build unspecified copy_conf
 default: unspecified
 
 unspecified:
@@ -47,12 +47,14 @@ build:
 
 #### MISSIONS
 
-retrieval_mission:
+retrieval_mission: copy_conf
 	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
 
-science_mission:
-	@terminator --maximize --working-directory "$(pwd)" --config termc/science.conf
+science_mission: copy_conf
+	@terminator --maximize --working-directory "$(pwd)" -l science
 
+copy_conf:
+	@cp termc/all.conf ~/.config/terminator/config
 
 #### HEARTBEAT
 
