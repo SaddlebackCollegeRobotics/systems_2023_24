@@ -9,7 +9,7 @@ unspecified:
 	@echo "  Missions:"
 	@echo "    retrieval_mission"
 	@echo "    science_mission"
-	@echo "    TODO!"
+	@echo "    equipment_mission"
 	@echo ""
 	@echo "  Grouped Options:"
 	@echo "    drive"
@@ -51,7 +51,13 @@ build:
 # 	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
 
 science_mission: copy_conf
-	@terminator --maximize --working-directory "$(pwd)" -l science
+	@terminator --maximize --working-directory ~/systems_2023_24 -l science
+
+equipment_mission: copy_conf
+	@terminator --maximize --working-directory ~/systems_2023_24 -l equipment
+
+autonomy_mission: copy_conf
+	@terminator --maximize --working-directory ~/systems_2023_24 -l autonomy
 
 copy_conf:
 	@mkdir -p ~/.config/terminator
