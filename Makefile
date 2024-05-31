@@ -47,13 +47,14 @@ build:
 
 #### MISSIONS
 
-retrieval_mission: copy_conf
-	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
+# retrieval_mission: copy_conf
+# 	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
 
 science_mission: copy_conf
 	@terminator --maximize --working-directory "$(pwd)" -l science
 
 copy_conf:
+	@mkdir -p ~/.config/terminator
 	@cp termc/all.conf ~/.config/terminator/config
 
 #### HEARTBEAT
