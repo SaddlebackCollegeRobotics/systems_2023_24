@@ -78,7 +78,7 @@ gui_frontend:
 
 gui_backend:
 	# TODO: Need to run script to get databases first?
-	@cd sys_ws/base-station-gui/server && python manage.py migrate && python manage.py runserver
+	@cd sys_ws/base-station-gui/server && python3 manage.py migrate && python3 manage.py runserver
 
 #### DRIVE
 
