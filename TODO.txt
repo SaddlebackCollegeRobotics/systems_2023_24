@@ -1,0 +1,5 @@
+- PI / arduino terminator tab for autonomy LED
+- Set led blue
+- Terminator cfg
+    - LED
+    - Televideo: @pi = ros2 run analog_camera analog_camera_switcher
