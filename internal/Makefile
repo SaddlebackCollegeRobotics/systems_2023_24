@@ -24,10 +24,10 @@ build:
 science_mission:
 	cd systems_2023_24 ; $(MAKE) $@
 
-equipment_mission: copy_conf
+equipment_mission:
 	cd systems_2023_24 ; $(MAKE) $@
 
-autonomy_mission: copy_conf
+autonomy_mission:
 	cd systems_2023_24 ; $(MAKE) $@
 
 #### HEARTBEAT
