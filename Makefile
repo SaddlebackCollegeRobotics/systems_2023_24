@@ -47,6 +47,9 @@ build:
 
 #### MISSIONS
 
+autonomy_test: copy_conf
+	@terminator --maximize --working-directory=~/ros2_ws/systems_2023_24 -l autonomy_test
+
 # retrieval_mission: copy_conf
 # 	@python3 multi-runner.py "make gui" "make drive" "make arm" "make televideo" "make gps"
 

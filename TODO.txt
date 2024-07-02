@@ -3,3 +3,5 @@
 - Terminator cfg
     - LED
     - Televideo: @pi = ros2 run analog_camera analog_camera_switcher
+
+Manually compute heading via input (web server?)
